@@ -6,7 +6,7 @@ import { getPosts } from "../services";
 
 export default function HomePage({ posts }: HomePageProps) {
 	return (
-		<div className="container mx-auto px-10 mb-8 bg-gray-300">
+		<div className="container mx-auto px-10 mb-8">
 			<Head>
 				<title>Curriculum Cafe | Home</title>
 			</Head>

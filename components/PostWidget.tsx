@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Link from "next/link";
-import { MdDateRange } from "react-icons/md";
 import { getRecentPosts, getSimiliarPosts } from "@/services";
-import { Community, Post } from "@/utils/types";
+import { Post } from "@/utils";
 
-const PostWidget: React.FC<PostWidgetProps> = ({ slug, communities }) => {
+const PostWidget: React.FC<PostWidgetProps> = () => {
 	const [relatedPosts, setRelatedPosts] = useState<Post[]>([]);
 
 	useEffect(() => {
-		if (slug) {
-			getSimiliarPosts(slug, communities).then((res: any) => setRelatedPosts(res));
-		} else {
-			getRecentPosts().then((res: any) => setRelatedPosts(res));
-		}
-	}, [slug]);
+		getRecentPosts().then((res: any) => setRelatedPosts(res));
+	}, []);
 
 	const renderedPosts = relatedPosts.map((post: any) => {
 		return (
@@ -46,9 +41,7 @@ const PostWidget: React.FC<PostWidgetProps> = ({ slug, communities }) => {
 
 	return (
 		<div className="bg-white shadow-lg rounded-lg p-8 mb-8">
-			<h3 className="text-xl mb-6 font-semibold border-b border-green0 pb-4">
-				{slug ? "Related Posts" : "Recent Posts"}
-			</h3>
+			<h3 className="text-xl mb-6 font-semibold border-b border-green0 pb-4">Recent Posts</h3>
 			{renderedPosts}
 		</div>
 	);
@@ -56,8 +49,7 @@ const PostWidget: React.FC<PostWidgetProps> = ({ slug, communities }) => {
 
 // :::*
 export interface PostWidgetProps {
-	communities: string[];
-	slug: string;
+	//
 }
 
 export default PostWidget;

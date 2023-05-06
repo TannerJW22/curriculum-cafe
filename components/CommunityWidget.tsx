@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCommunities } from "@/services";
 import Link from "next/link";
-import { Community } from "@/utils/types";
+import { Community } from "@/utils";
 
 const CommunityWidget: React.FC<CommunityWidgetProps> = () => {
 	const [communities, setCommunities] = useState<Community[]>([]);

@@ -3,7 +3,7 @@ import moment from "moment";
 import Link from "next/link";
 import { MdDateRange } from "react-icons/md";
 
-import { Post } from "@/utils/types";
+import { Post } from "@/utils";
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
 	console.log(post); // <<--*
@@ -23,7 +23,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 			<div className="block lg:flex text-center items-center justify-center mb-8 w-full">
 				<div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8">
 					<img
-						className="align-middle rounded-full"
+						className="align-middle rounded-md"
 						alt={post.author.name}
 						src={post.author.photo.url}
 						width="30px"

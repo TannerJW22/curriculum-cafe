@@ -4,7 +4,7 @@ export interface Post {
 	title: string;
 	slug: string;
 	excerpt: string;
-	content: string;
+	content: any;
 	featuredImage: {
 		url: string;
 	};
@@ -30,8 +30,17 @@ export type Community = {
 	slug: string;
 };
 
+export type CMSComment = {
+	name: string;
+	email: string;
+	comment: string;
+	post: any;
+	fakeDate: Date;
+};
+
 // ::: Constants
 
 export const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
+export const loadGraphCMSImg = ({ src }: any) => src;
 
 // ::: Util Functions
