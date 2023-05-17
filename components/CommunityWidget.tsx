@@ -16,7 +16,7 @@ const CommunityWidget: React.FC<CommunityWidgetProps> = () => {
 
 	useEffect(() => {
 		getCommunities().then(res => setCommunities(res));
-	});
+	}, []);
 
 	return (
 		<div className="bg-white shadow-lg rounded-lg p-8 mb-8 pb-8">
