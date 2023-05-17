@@ -8,7 +8,7 @@ const Header: React.FC<HeaderProps> = () => {
 				<div className="md:float-left">
 					<Link className="flex items-center gap-2 px-6" href="/">
 						<Image alt="logo" src="/img/cc-logo-transparent.png" width={80} height={15} />
-						<span className="cursor-pointer font-bold text-3xl text-brown2 mt-2.5">
+						<span className="min-w-[200px] cursor-pointer font-bold text-base sm:text-xl md:text-2xl lg:text-3xl text-brown2 mt-2.5">
 							Curriculum Cafe
 						</span>
 					</Link>

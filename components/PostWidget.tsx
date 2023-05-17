@@ -16,7 +16,7 @@ const PostWidget: React.FC<PostWidgetProps> = () => {
 			<div key={post.title}>
 				<Link href={`/post/${post.slug}`} key={post.title} className="text-md">
 					<div className="flex items-center w-full mb-1 pl-4 hover:bg-green0 hover:bg-opacity-30 py-3 rounded-xl">
-						<div className="w-16 flex-none">
+						<div className="hidden sm:block w-16 flex-none">
 							<img
 								className="align-middle rounded-full"
 								alt={post.title}
