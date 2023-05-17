@@ -33,8 +33,11 @@ export const getPosts = async (): Promise<[]> => {
 		}
 	`;
 
-	let res: any = await request(graphqlAPI!, query);
-	return res.postsConnection.edges;
+	const res: any = await request(graphqlAPI!, query);
+	let posts = res.postsConnection.edges;
+	posts = posts.map((post: any): Post => post.node);
+
+	return posts;
 };
 
 // :::
@@ -127,6 +130,44 @@ export const getCommunities = async (): Promise<[]> => {
 	return res.communities;
 };
 
+export const getCommunityPost = async (slug: string) => {
+	const query = gql`
+		query getCommunityPost($slug: String!) {
+			postsConnection(where: { community: { slug: $slug } }) {
+				edges {
+					cursor
+					node {
+						author {
+							bio
+							name
+							id
+							photo {
+								url
+							}
+						}
+						fakeDate
+						slug
+						title
+						excerpt
+						featuredImage {
+							url
+						}
+						community {
+							name
+							slug
+						}
+					}
+				}
+			}
+		}
+	`;
+
+	const res: any = await request(graphqlAPI!, query, { slug: slug });
+	let posts = res.postsConnection.edges;
+	posts = posts.map((post: any): Post => post.node);
+	return posts;
+};
+
 // :::
 export const getComments = async (slug: string) => {
 	const query = gql`
@@ -140,9 +181,6 @@ export const getComments = async (slug: string) => {
 	`;
 
 	const res: any = await request(graphqlAPI!, query, { slug });
-
-	console.log(res); // <<--*
-	console.log("RES>COMMENTS>>>>\n", res.comments); // <<--*
 
 	return res.comments;
 };
@@ -158,4 +196,30 @@ export const submitComment = async (obj: any) => {
 	});
 
 	return res.json();
+};
+
+// :::
+export const getFeaturedPosts = async () => {
+	const query = gql`
+    query GetCategoryPost() {
+      posts(where: {isFeatured: true}) {
+        author {
+          name
+          photo {
+            url
+          }
+        }
+        featuredImage {
+          url
+        }
+        title
+        slug
+        fakeDate
+      }
+    }   
+  `;
+
+	const res: any = await request(graphqlAPI!, query);
+
+	return res.posts;
 };

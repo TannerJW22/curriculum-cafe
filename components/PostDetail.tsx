@@ -79,9 +79,9 @@ const PostDetail: React.FC<PostDetailProps> = ({ post }) => {
 								{post.author.name}
 							</p>
 						</div>
-						<div className="font-medium text-gray-700">
-							<MdDateRange />
-							<span className="align-middle">{moment(post.createdAt).format("MMM DD, YYYY")}</span>
+						<div className="flex gap-2 font-medium text-gray-700">
+							<MdDateRange className="text-2xl" />
+							<span className="align-middle">{moment(post.fakeDate).format("MMM DD, YYYY")}</span>
 						</div>
 					</div>
 					<h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>

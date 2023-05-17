@@ -6,8 +6,6 @@ import { MdDateRange } from "react-icons/md";
 import { Post } from "@/utils";
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-	console.log(post); // <<--*
-
 	return (
 		<div key={post.title} className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
 			<div className="relative overflow-hidden shadow-md pb-80 mb-6">
@@ -31,8 +29,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 					/>
 					<p className="inline align-middle text-gray-700 ml-2 text-lg">{post.author.name}</p>
 				</div>
-				<div className="font-medium text-gray-700">
-					<MdDateRange />
+				<div className=" flex items-center gap-2 font-medium text-gray-700">
+					<MdDateRange className="text-xl" />
 					<span>{moment(post.fakeDate).format("MMM DD, YYYY")}</span>
 				</div>
 			</div>

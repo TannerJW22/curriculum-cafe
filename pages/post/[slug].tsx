@@ -18,7 +18,6 @@ const PostDetails = ({ post }: PostDetailsProps) => {
 					<div className="col-span-1 lg:col-span-8">
 						<PostDetail post={post} />
 						<Author author={post.author} />
-						{/* <AdjacentPosts slug={post.slug} createdAt={post.fakeDate} /> */}
 						<CommentsForm slug={post.slug} />
 						<Comments slug={post.slug} />
 					</div>
@@ -43,10 +42,10 @@ export async function getStaticProps({ params }: any) {
 }
 
 export async function getStaticPaths() {
-	const posts = await getPosts();
+	let posts: any = await getPosts();
 
 	return {
-		paths: posts.map((post: any) => ({ params: { slug: post.node.slug } })),
+		paths: posts.map((post: any) => ({ params: { slug: post.slug } })),
 		fallback: false,
 	};
 }

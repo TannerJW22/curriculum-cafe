@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { CommunityWidget, PostCard, PostWidget } from "../components";
+import FeaturedPosts from "@/sections/FeaturedPost";
 import { getPosts } from "../services";
 
 export default function HomePage({ posts }: HomePageProps) {
@@ -10,16 +11,18 @@ export default function HomePage({ posts }: HomePageProps) {
 			<Head>
 				<title>Curriculum Cafe | Home</title>
 			</Head>
+			<FeaturedPosts />
 			<div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 				<div className="lg:col-span-8 col-span-1">
 					{posts.map((post: any) => (
-						<PostCard post={post.node} key={post.title} />
+						<PostCard post={post} key={post.title} />
 					))}
 				</div>
 				<div className="lg:col-span-4 col-span-1">
-					<div className="lg:sticky relative top-8">New Components</div>
-					<CommunityWidget />
-					<PostWidget />
+					<div className="lg:sticky relative top-8">
+						<CommunityWidget />
+						<PostWidget />
+					</div>
 				</div>
 			</div>
 		</div>
